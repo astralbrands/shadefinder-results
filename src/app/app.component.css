@@ -8,6 +8,7 @@
   flex-direction: column;
   align-items: center;
   padding: 0 10vw;
+  overflow: hidden;
 }
 
 #results-container .header {
@@ -42,6 +43,10 @@
   align-items: center;
   padding: 3rem 0;
   border-bottom: solid 1px #eeeeee;
+}
+
+#results-container .result:last-child {
+  border-bottom: none;
 }
 
 /* details */
