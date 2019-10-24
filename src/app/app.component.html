@@ -6,37 +6,34 @@
   <span class="start-over">&#8249; START OVER</span>
 
   <div class="results">
-    <div class="result">
+    <div class="result" *ngFor="let result of results">
 
       <div class="details">
 
         <div class="image product product-image">
           <!-- <img src="" alt=""> -->
-          <div class="img">image</div>
+          <div class="img">{{result.images.thumbnail}}</div>
         </div>
 
         <div class="shade-details">
 
-          <span class="shade-name">DPG5</span>
+          <span class="shade-name">{{result.shadeName}}</span>
 
-          <p class="product-name">4-in-1 Love Your Selfie Foundation &amp; Concealer</p>
+          <p class="product-name">{{result.productName}}</p>
 
           <div class="price-and-rating">
-            <span class="price">$36.00</span>
+            <span class="price">{{result.price}}</span>
             <span class="separator">|</span>
             <div class="rating">
-              <span class="star">&#9733;</span>
-              <span class="star">&#9733;</span>
-              <span class="star">&#9733;</span>
-              <span class="star">&#9733;</span>
-              <span class="star empty">&#9734;</span>
+              <span class="star" *ngFor="let i of Arr(M.floor(result.stars)).fill(1)">&#9733;</span>
+              <span class="star empty" *ngFor="let i of Arr(5 - M.floor(result.stars)).fill(1)">&#9734;</span>
             </div>
           </div>
 
           <div class="suggested-shades">
-            <span class="label">Suggested Shades</span>
+            <span class="label" *ngIf="result.suggestedShades.light || result.suggestedShades.dark">Suggested Shades</span>
 
-            <div class="phantom-container">
+            <div class="phantom-container" *ngIf="result.suggestedShades.light || result.suggestedShades.dark">
               <div class="img-half"></div>
               <div class="phantom-wrapper">
                 <div class="phantom"></div>
@@ -44,9 +41,9 @@
               <div class="img-half"></div>
             </div>
 
-            <div class="shades">
+            <div class="shades" [class.center]="!result.suggestedShades.light && !result.suggestedShades.dark">
 
-              <div class="shade">
+              <div class="shade light" *ngIf="result.suggestedShades.light as light" (click)="selectShade($event)">
                 <div class="shade-image">
                   <!-- <img src="" alt=""> -->
                   <div class="shade-image-wrapper">
@@ -54,10 +51,10 @@
                   </div>
                 </div>
 
-                <span class="shade-label">DPG4</span>
+                <span class="shade-label">{{light.shadeName}}</span>
               </div>
 
-              <div class="shade selected">
+              <div class="shade selected" (click)="selectShade($event)">
                 <div class="shade-image">
                   <!-- <img src="" alt=""> -->
                   <div class="shade-image-wrapper">
@@ -65,10 +62,10 @@
                   </div>
                 </div>
 
-                <span class="shade-label">DPG5</span>
+                <span class="shade-label">{{result.shadeName}}</span>
               </div>
 
-              <div class="shade">
+              <div class="shade" *ngIf="result.suggestedShades.dark as dark" (click)="selectShade($event)">
                 <div class="shade-image">
                   <!-- <img src="" alt=""> -->
                   <div class="shade-image-wrapper">
@@ -76,7 +73,7 @@
                   </div>
                 </div>
 
-                <span class="shade-label">DPG6</span>
+                <span class="shade-label">{{dark.shadeName}}</span>
               </div>
 
             </div>
@@ -90,25 +87,25 @@
         </div>
       </div>
 
-      <div class="plus">
+      <div class="plus" *ngIf="result.addon">
         <span>+</span>
       </div>
 
       <div class="addon-container">
 
-        <div class="addon">
+        <div class="addon" *ngIf="result.addon as addon">
 
           <div class="image product addon-image">
-            <div class="img">image</div>
+            <div class="img">{{addon.image}}</div>
           </div>
 
           <div class="addon-details">
 
-            <span class="label">Pair Perfectly With</span>
+            <span class="label">{{addon.label}}</span>
 
-            <p class="addon-name">BHOLDER Dual Action Complexion Applicator</p>
+            <p class="addon-name">{{addon.name}}</p>
 
-            <span class="price">$28.00</span>
+            <span class="price">{{addon.price}}</span>
 
             <div class="addtocart">
               <button>Add to Cart</button>
@@ -122,124 +119,5 @@
       </div>
 
     </div>
-
-    <!-- result 2 -->
-
-    <div class="result">
-
-        <div class="details">
-  
-          <div class="image product product-image">
-            <!-- <img src="" alt=""> -->
-            <div class="img">image</div>
-          </div>
-  
-          <div class="shade-details">
-  
-            <span class="shade-name">DPG5</span>
-  
-            <p class="product-name">4-in-1 Love Your Selfie Foundation &amp; Concealer</p>
-  
-            <div class="price-and-rating">
-              <span class="price">$36.00</span>
-              <span class="separator">|</span>
-              <div class="rating">
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star empty">&#9734;</span>
-              </div>
-            </div>
-  
-            <div class="suggested-shades">
-              <span class="label">Suggested Shades</span>
-  
-              <div class="phantom-container">
-                <div class="img-half"></div>
-                <div class="phantom-wrapper">
-                  <div class="phantom"></div>
-                </div>
-                <div class="img-half"></div>
-              </div>
-  
-              <div class="shades">
-  
-                <div class="shade">
-                  <div class="shade-image">
-                    <!-- <img src="" alt=""> -->
-                    <div class="shade-image-wrapper">
-                      <div class="img"></div>
-                    </div>
-                  </div>
-  
-                  <span class="shade-label">DPG4</span>
-                </div>
-  
-                <div class="shade selected">
-                  <div class="shade-image">
-                    <!-- <img src="" alt=""> -->
-                    <div class="shade-image-wrapper">
-                      <div class="img"></div>
-                    </div>
-                  </div>
-  
-                  <span class="shade-label">DPG5</span>
-                </div>
-  
-                <div class="shade">
-                  <div class="shade-image">
-                    <!-- <img src="" alt=""> -->
-                    <div class="shade-image-wrapper">
-                      <div class="img"></div>
-                    </div>
-                  </div>
-  
-                  <span class="shade-label">DPG6</span>
-                </div>
-  
-              </div>
-  
-            </div>
-  
-            <div class="addtocart">
-              <button>Add To Cart</button>
-            </div>
-  
-          </div>
-        </div>
-  
-        <div class="plus">
-          <span>+</span>
-        </div>
-  
-        <div class="addon-container">
-  
-          <div class="addon">
-  
-            <div class="image product addon-image">
-              <div class="img">image</div>
-            </div>
-  
-            <div class="addon-details">
-  
-              <span class="label">Pair Perfectly With</span>
-  
-              <p class="addon-name">BHOLDER Dual Action Complexion Applicator</p>
-  
-              <span class="price">$28.00</span>
-  
-              <div class="addtocart">
-                <button>Add to Cart</button>
-              </div>
-  
-  
-  
-            </div>
-  
-          </div>
-        </div>
-  
-      </div>
   </div>
 </div>

@@ -40,7 +40,7 @@
 
 #results-container .result {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   padding: 3rem 0;
   border-bottom: solid 1px #eeeeee;
 }
@@ -119,10 +119,15 @@
   margin-top: 0.2rem;
 }
 
+#results-container .suggested-shades .shades.center {
+  justify-content: center;
+}
+
 #results-container .suggested-shades .shades .shade {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 0.25rem;
 }
 
 #results-container .suggested-shades .shades .shade .shade-image {
@@ -138,7 +143,7 @@
 }
 
 #results-container .suggested-shades .shades .shade.selected {
-  margin: 0 0.5rem;
+  /* margin: 0 0.5rem; */
 }
 
 #results-container .suggested-shades .shades .shade.selected .shade-image-wrapper {
@@ -182,7 +187,7 @@
 }
 
 #results-container .phantom-container .img-half {
-  width: 2rem;
+  width: 2.25rem;
   height: 1rem;
 }
 
@@ -236,8 +241,26 @@
   color: #d1ab86;
 }
 
-#results-container .addon {
+#results-container .addon-container .price {
+  font-family: 'Gotham-Book', sans-serif;
+}
+
+#results-container .addon { 
   display: flex;
+  height: 100%;
+}
+
+#results-container .addon .addon-details{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+#results-container .addon .addon-name{
+  font-family: 'Gotham-Book', sans-serif;
+  text-align: center;
+  margin-bottom: 0;
 }
 
 /* images */
@@ -262,4 +285,6 @@
 
 #results-container .plus {
   margin: 0rem 5vw;
+  display: flex;
+  align-items: center;
 }
